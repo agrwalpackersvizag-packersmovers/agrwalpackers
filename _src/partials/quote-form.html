@@ -1,0 +1,111 @@
+<div class="quote-form-wrap">
+  <form class="quote-form" id="quote-form" action="/forms/quote-handler.php" method="post" novalidate>
+    <p class="form-intro">Fill this in and we will send you a written estimate. Fields marked <span aria-hidden="true">*</span> are required.</p>
+
+    <div class="form-grid">
+      <p class="field">
+        <label for="qf-name">Full name <span class="req" aria-hidden="true">*</span></label>
+        <input type="text" id="qf-name" name="name" autocomplete="name" required minlength="2" maxlength="80"
+               aria-describedby="qf-name-err" placeholder="Your name">
+        <span class="field-error" id="qf-name-err" role="alert"></span>
+      </p>
+
+      <p class="field">
+        <label for="qf-phone">Mobile number <span class="req" aria-hidden="true">*</span></label>
+        <input type="tel" id="qf-phone" name="phone" autocomplete="tel" required inputmode="numeric"
+               maxlength="15" aria-describedby="qf-phone-hint qf-phone-err"
+               placeholder="10-digit mobile number">
+        <span class="field-hint" id="qf-phone-hint">We call or WhatsApp you on this number.</span>
+        <span class="field-error" id="qf-phone-err" role="alert"></span>
+      </p>
+
+      <p class="field">
+        <label for="qf-email">Email</label>
+        <input type="email" id="qf-email" name="email" autocomplete="email" maxlength="120"
+               aria-describedby="qf-email-err" placeholder="you@example.com">
+        <span class="field-error" id="qf-email-err" role="alert"></span>
+      </p>
+
+      <p class="field">
+        <label for="qf-date">Moving date</label>
+        <input type="date" id="qf-date" name="moving_date" aria-describedby="qf-date-hint">
+        <span class="field-hint" id="qf-date-hint">An approximate date is fine.</span>
+      </p>
+
+      <p class="field">
+        <label for="qf-from">Moving from <span class="req" aria-hidden="true">*</span></label>
+        <input type="text" id="qf-from" name="moving_from" required maxlength="120"
+               aria-describedby="qf-from-err" placeholder="Area and city, e.g. Sardarpura, Jodhpur">
+        <span class="field-error" id="qf-from-err" role="alert"></span>
+      </p>
+
+      <p class="field">
+        <label for="qf-to">Moving to <span class="req" aria-hidden="true">*</span></label>
+        <input type="text" id="qf-to" name="moving_to" required maxlength="120"
+               aria-describedby="qf-to-err" placeholder="Area and city, e.g. Sector 62, Noida">
+        <span class="field-error" id="qf-to-err" role="alert"></span>
+      </p>
+
+      <p class="field">
+        <label for="qf-property">Property type</label>
+        <select id="qf-property" name="property_type">
+          <option value="">Select property type</option>
+          <option>1 BHK</option>
+          <option>2 BHK</option>
+          <option>3 BHK</option>
+          <option>4 BHK</option>
+          <option>Villa</option>
+          <option>Office</option>
+          <option>Other</option>
+        </select>
+      </p>
+
+      <p class="field">
+        <label for="qf-service">Service required <span class="req" aria-hidden="true">*</span></label>
+        <select id="qf-service" name="service" required aria-describedby="qf-service-err">
+          <option value="">Select a service</option>
+          <option>Home Shifting</option>
+          <option>Office Relocation</option>
+          <option>Car Transportation</option>
+          <option>Bike Transportation</option>
+          <option>Local Shifting</option>
+          <option>Intercity Relocation</option>
+          <option>Packing Services</option>
+          <option>Storage</option>
+        </select>
+        <span class="field-error" id="qf-service-err" role="alert"></span>
+      </p>
+
+      <p class="field field-full">
+        <label for="qf-message">Anything we should know?</label>
+        <textarea id="qf-message" name="message" rows="3" maxlength="1200"
+                  placeholder="Floor number, lift availability, large or fragile items, parking access&hellip;"></textarea>
+      </p>
+    </div>
+
+    <!-- Spam controls: honeypot + render timestamp + JS-set token. No CAPTCHA, so
+         conversion is unaffected. Verified server-side in /forms/quote-handler.php -->
+    <div class="hp-field" aria-hidden="true">
+      <label for="qf-company">Company (leave this field empty)</label>
+      <input type="text" id="qf-company" name="company" tabindex="-1" autocomplete="off">
+    </div>
+    <input type="hidden" name="form_started" value="">
+    <input type="hidden" name="js_token" value="">
+    <input type="hidden" name="source_page" value="{{FORM_SOURCE}}">
+
+    <p class="form-consent">
+      <label class="checkbox">
+        <input type="checkbox" name="consent" value="yes" required aria-describedby="qf-consent-err">
+        <span>I agree to be contacted about this enquiry. See our <a href="/privacy-policy">Privacy Policy</a>. <span class="req" aria-hidden="true">*</span></span>
+      </label>
+      <span class="field-error" id="qf-consent-err" role="alert"></span>
+    </p>
+
+    <p class="form-submit">
+      <button type="submit" class="btn btn-primary btn-block btn-lg" data-track="quote_form_submit">Get Free Moving Quote</button>
+    </p>
+    <p class="form-alt">Prefer to talk? <a href="tel:{{PHONE_HREF}}" data-track="call_click" data-location="quote-form">Call {{PHONE_DISPLAY}}</a>
+      or <a href="{{WHATSAPP_URL}}" target="_blank" rel="noopener" data-track="whatsapp_click" data-location="quote-form">message us on WhatsApp</a>.</p>
+    <p class="form-status" id="quote-form-status" role="status" aria-live="polite"></p>
+  </form>
+</div>

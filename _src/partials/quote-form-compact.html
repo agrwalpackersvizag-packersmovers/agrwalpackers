@@ -1,0 +1,62 @@
+<div class="quote-card">
+  <h2 class="quote-card-title">Get a free moving quote</h2>
+  <p class="quote-card-sub">Share a few details and we reply with a written estimate. No obligation.</p>
+  <form class="quote-form quote-form-compact" id="hero-quote-form" action="/forms/quote-handler.php" method="post" novalidate>
+    <p class="field">
+      <label for="hq-name">Full name <span class="req" aria-hidden="true">*</span></label>
+      <input type="text" id="hq-name" name="name" autocomplete="name" required minlength="2" maxlength="80" aria-describedby="hq-name-err" placeholder="Your name">
+      <span class="field-error" id="hq-name-err" role="alert"></span>
+    </p>
+    <p class="field">
+      <label for="hq-phone">Mobile number <span class="req" aria-hidden="true">*</span></label>
+      <input type="tel" id="hq-phone" name="phone" autocomplete="tel" required inputmode="numeric" maxlength="15" aria-describedby="hq-phone-err" placeholder="10-digit mobile number">
+      <span class="field-error" id="hq-phone-err" role="alert"></span>
+    </p>
+    <div class="form-grid form-grid-2">
+      <p class="field">
+        <label for="hq-from">Moving from <span class="req" aria-hidden="true">*</span></label>
+        <input type="text" id="hq-from" name="moving_from" required maxlength="120" aria-describedby="hq-from-err" placeholder="City or area">
+        <span class="field-error" id="hq-from-err" role="alert"></span>
+      </p>
+      <p class="field">
+        <label for="hq-to">Moving to <span class="req" aria-hidden="true">*</span></label>
+        <input type="text" id="hq-to" name="moving_to" required maxlength="120" aria-describedby="hq-to-err" placeholder="City or area">
+        <span class="field-error" id="hq-to-err" role="alert"></span>
+      </p>
+    </div>
+    <p class="field">
+      <label for="hq-service">Service required <span class="req" aria-hidden="true">*</span></label>
+      <select id="hq-service" name="service" required aria-describedby="hq-service-err">
+        <option value="">Select a service</option>
+        <option>Home Shifting</option>
+        <option>Office Relocation</option>
+        <option>Car Transportation</option>
+        <option>Bike Transportation</option>
+        <option>Local Shifting</option>
+        <option>Intercity Relocation</option>
+        <option>Packing Services</option>
+        <option>Storage</option>
+      </select>
+      <span class="field-error" id="hq-service-err" role="alert"></span>
+    </p>
+    <div class="hp-field" aria-hidden="true">
+      <label for="hq-company">Company (leave this field empty)</label>
+      <input type="text" id="hq-company" name="company" tabindex="-1" autocomplete="off">
+    </div>
+    <input type="hidden" name="form_started" value="">
+    <input type="hidden" name="js_token" value="">
+    <input type="hidden" name="source_page" value="{{FORM_SOURCE}}">
+    <p class="form-consent">
+      <label class="checkbox">
+        <input type="checkbox" name="consent" value="yes" required aria-describedby="hq-consent-err">
+        <span>I agree to be contacted about this enquiry. <a href="/privacy-policy">Privacy Policy</a>. <span class="req" aria-hidden="true">*</span></span>
+      </label>
+      <span class="field-error" id="hq-consent-err" role="alert"></span>
+    </p>
+    <p class="form-submit">
+      <button type="submit" class="btn btn-primary btn-block btn-lg" data-track="quote_form_submit">Get Free Moving Quote</button>
+    </p>
+    <p class="quote-card-note">Need a detailed estimate with dates and item notes? Use the <a href="/contact-us#quote-form">full moving quote form</a>.</p>
+    <p class="form-status" id="hero-quote-form-status" role="status" aria-live="polite"></p>
+  </form>
+</div>
