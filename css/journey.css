@@ -1,0 +1,122 @@
+/* ==========================================================================
+   Journey / motion system
+   Everything specific to the moving-truck storytelling: the hero road strip,
+   the "pickup → delivered" journey section, the home/office showcase panels
+   and the process connecting-line. Kept isolated from style.css so the
+   animation surface area is easy to find and reason about.
+
+   All motion here is driven by transform/opacity only (GPU-friendly) and is
+   neutralised by the .no-js and prefers-reduced-motion rules at the bottom.
+   ========================================================================== */
+
+/* ── hero road strip ──────────────────────────────────────────────────── */
+.hero-strip {
+  position: relative;
+  margin-inline: calc(var(--gap) * -1);
+  border-top: 1px solid rgba(255, 255, 255, .08);
+  background: linear-gradient(180deg, rgba(5, 15, 30, 0) 0%, rgba(5, 15, 30, .35) 100%);
+  overflow: hidden;
+}
+.hero-strip svg { display: block; width: 100%; height: auto; }
+.hero-strip .road-line {
+  stroke-dasharray: 14 16;
+  animation: road-flow 1.1s linear infinite;
+}
+.hero-strip .cloud { animation: cloud-drift 14s ease-in-out infinite; }
+.hero-strip .cloud-b { animation-duration: 18s; animation-delay: -4s; }
+.hero-strip .cloud-c { animation-duration: 22s; animation-delay: -9s; }
+.hero-strip .exhaust-puff { transform-box: fill-box; transform-origin: center; opacity: 0; }
+.hero-strip .wheel { transform-box: fill-box; transform-origin: center; }
+
+@keyframes road-flow { to { stroke-dashoffset: -60; } }
+@keyframes cloud-drift {
+  0%, 100% { transform: translateX(0); }
+  50% { transform: translateX(18px); }
+}
+
+/* ── journey: pickup → delivered ─────────────────────────────────────── */
+.section-journey { overflow: hidden; }
+.journey-road {
+  position: relative;
+  margin-top: 3rem;
+  padding-top: 2.5rem;
+}
+.journey-line {
+  position: absolute;
+  top: 14px; left: 4%; right: 4%;
+  height: 3px; border-radius: 3px;
+  background: var(--line-strong);
+}
+.journey-line-fill {
+  position: absolute; inset: 0 auto 0 0;
+  width: calc(var(--progress, 0) * 100%);
+  border-radius: 3px;
+  background: linear-gradient(90deg, var(--accent), var(--kraft));
+}
+.journey-truck-marker {
+  position: absolute; top: 14px; left: calc(var(--progress, 0) * 100%);
+  width: 38px; height: 38px; border-radius: 50%;
+  background: var(--accent); color: #fff; box-shadow: var(--shadow-glow);
+  display: flex; align-items: center; justify-content: center;
+  transform: translate(-50%, -50%);
+  will-change: left;
+}
+.journey-truck-marker svg { width: 20px; height: 20px; }
+.journey-stages {
+  list-style: none; margin: 0; padding: 0;
+  display: grid; grid-template-columns: 1fr; gap: 1.6rem;
+}
+.journey-stage { position: relative; padding-top: .5rem; text-align: left; }
+.journey-stage-icon {
+  width: 30px; height: 30px; border-radius: 50%; background: #fff; border: 3px solid var(--line-strong);
+  display: flex; align-items: center; justify-content: center; margin-bottom: .9rem; position: relative; z-index: 1;
+  transition: border-color .3s var(--ease-soft), background-color .3s var(--ease-soft);
+}
+.journey-stage-icon svg { width: 15px; height: 15px; color: var(--muted); transition: color .3s ease; }
+.journey-stage.is-active .journey-stage-icon { border-color: var(--accent); background: var(--accent-soft); }
+.journey-stage.is-active .journey-stage-icon svg { color: var(--accent-dark); }
+.journey-stage h3 { font-size: 1rem; margin-bottom: .3rem; }
+.journey-stage p { font-size: .9rem; margin: 0; color: var(--muted); }
+
+/* ── home / office showcase ──────────────────────────────────────────── */
+.showcase-grid { display: grid; grid-template-columns: 1fr; gap: 1.5rem; }
+.showcase-panel {
+  background: #fff; border: 1px solid var(--line); border-radius: var(--radius-lg);
+  overflow: hidden; box-shadow: var(--shadow-sm); display: flex; flex-direction: column;
+  transition: box-shadow .3s var(--ease-soft), transform .3s var(--ease-soft);
+}
+.showcase-panel:hover { box-shadow: var(--shadow-lg); transform: translateY(-4px); }
+.showcase-panel-media {
+  background: var(--bg-tint); padding: 1.75rem 1.75rem 0; position: relative; overflow: hidden;
+}
+.showcase-panel-media img { margin-inline: auto; }
+.showcase-panel-body { padding: 1.6rem 1.6rem 1.8rem; }
+.showcase-panel-body .eyebrow { margin-bottom: .7rem; }
+.showcase-panel-body p { font-size: .96rem; }
+
+/* ── process connecting line (mobile / single-column steps only) ────────── */
+.steps-track { position: relative; }
+.steps-track .steps { position: relative; z-index: 1; }
+
+/* ── CTA band decorative truck ───────────────────────────────────────── */
+.cta-scene { position: absolute; right: -10px; bottom: -14px; width: 220px; opacity: .9; pointer-events: none; z-index: 0; }
+.cta-scene svg { width: 100%; height: auto; }
+
+/* ── floating decorative boxes (hero) ────────────────────────────────── */
+.float-box { position: absolute; opacity: .9; animation: float-drift 6s ease-in-out infinite; }
+@keyframes float-drift {
+  0%, 100% { transform: translateY(0) rotate(var(--rot, 0deg)); }
+  50% { transform: translateY(-10px) rotate(var(--rot, 0deg)); }
+}
+
+/* ── reduced motion & no-js: freeze on a sensible static frame ─────────── */
+.no-js .journey-line-fill,
+.no-js .journey-truck-marker { display: none; }
+.no-js .journey-stage .journey-stage-icon { border-color: var(--line-strong); }
+
+@media (prefers-reduced-motion: reduce) {
+  .hero-strip .road-line,
+  .hero-strip .cloud,
+  .float-box { animation: none; }
+  .journey-truck-marker { transition: none; }
+}

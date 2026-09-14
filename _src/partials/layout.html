@@ -23,10 +23,13 @@
 <meta name="twitter:title" content="{{OG_TITLE}}">
 <meta name="twitter:description" content="{{OG_DESCRIPTION}}">
 <meta name="twitter:image" content="{{OG_IMAGE}}">
-<link rel="icon" href="/images/favicon.svg" type="image/svg+xml">
-<link rel="apple-touch-icon" href="/images/apple-touch-icon.png">
+<link rel="icon" href="/assets/logo/png/favicon-32.png" type="image/png">
+<link rel="apple-touch-icon" href="/assets/logo/png/favicon-192.png">
 <link rel="manifest" href="/site.webmanifest">
+<link rel="preload" href="/assets/fonts/plus-jakarta-sans-variable.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="stylesheet" href="/css/fonts.css">
 <link rel="stylesheet" href="/css/style.css">
+<link rel="stylesheet" href="/css/journey.css">
 <link rel="stylesheet" href="/css/responsive.css" media="screen">
 <script>document.documentElement.className=document.documentElement.className.replace(/\bno-js\b/,'js');</script>
 {{HEAD_EXTRA}}
@@ -60,6 +63,9 @@
 </main>
 {{FOOTER}}
 {{STICKY_CTA}}
+<script src="/js/vendor/gsap.min.js" defer></script>
+<script src="/js/vendor/ScrollTrigger.min.js" defer></script>
 <script src="/js/main.js" defer></script>
+<script src="/js/animations.js" defer></script>
 </body>
 </html>

@@ -34,7 +34,7 @@
   .sticky-cta { display: none; }
 
   .nav-toggle { display: none; }
-  .site-nav, .no-js .site-nav { display: block; }
+  .site-nav, .no-js .site-nav { max-height: none; opacity: 1; overflow: visible; }
   .header-inner { flex-wrap: wrap; }
   .site-nav { order: 3; flex-basis: 100%; }
   .nav-list { display: flex; flex-wrap: wrap; gap: .25rem; padding: 0; border-top: 1px solid var(--line); }
@@ -99,6 +99,47 @@
 /* ── 1200px+ ───────────────────────────────────────────────────────────── */
 @media (min-width: 1200px) {
   .nav-list > li > a { padding: .6rem .8rem; font-size: .95rem; }
+}
+
+/* ── journey / showcase / review carousel ─────────────────────────────── */
+@media (max-width: 767px) {
+  /* Horizontal road becomes a vertical line the truck marker travels down —
+     the "convert horizontal animations into vertical interactions" rule. */
+  .journey-line { top: 4%; bottom: 4%; left: 14px; right: auto; width: 3px; height: auto; }
+  .journey-line-fill { width: 3px; height: calc(var(--progress, 0) * 100%); bottom: auto; }
+  .journey-truck-marker {
+    top: calc(var(--progress, 0) * 100%); left: 14px;
+    transform: translate(-50%, -50%);
+  }
+  .journey-stages { padding-left: 2.6rem; gap: 2rem; }
+  .journey-stage-icon { position: absolute; left: -2.6rem; margin-bottom: 0; }
+  .journey-stage { padding-top: 0; }
+
+  /* Vertical connecting line behind the numbered process steps. */
+  .steps-track { position: relative; padding-left: 0; }
+  .steps-track::before {
+    content: ""; position: absolute; left: 27px; top: 34px; bottom: 34px; width: 2px;
+    background: var(--line-strong); z-index: 0;
+  }
+
+  .cta-scene { display: none; }
+}
+
+@media (min-width: 560px) {
+  .review-nav { display: flex; }
+}
+
+@media (min-width: 768px) {
+  .showcase-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .journey-stages { grid-template-columns: repeat(5, 1fr); gap: 1rem; }
+  .journey-stage { text-align: center; }
+  .journey-stage-icon { margin-inline: auto; }
+  .page-hero { padding-block: 3.5rem; }
+}
+
+@media (min-width: 1024px) {
+  .hero { padding-block: 4.25rem 0; }
+  .hero-inner { padding-bottom: 3.25rem; }
 }
 
 /* ── print ─────────────────────────────────────────────────────────────── */

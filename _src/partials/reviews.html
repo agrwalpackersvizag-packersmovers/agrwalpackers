@@ -11,35 +11,45 @@
          exist — fake review markup is a manual-action risk.
          Recommended source: your Google Business Profile reviews.
          ══════════════════════════════════════════════════════════════════════ -->
-    <ul class="review-grid" role="list">
-      <li class="review-card">
-        <blockquote>
-          <p class="placeholder">[REAL CUSTOMER REVIEW — paste the customer's own words here]</p>
-        </blockquote>
-        <p class="review-meta">
-          <span class="review-name placeholder">[Customer Name]</span>
-          <span class="review-city placeholder">[City]</span>
-        </p>
-      </li>
-      <li class="review-card">
-        <blockquote>
-          <p class="placeholder">[REAL CUSTOMER REVIEW — paste the customer's own words here]</p>
-        </blockquote>
-        <p class="review-meta">
-          <span class="review-name placeholder">[Customer Name]</span>
-          <span class="review-city placeholder">[City]</span>
-        </p>
-      </li>
-      <li class="review-card">
-        <blockquote>
-          <p class="placeholder">[REAL CUSTOMER REVIEW — paste the customer's own words here]</p>
-        </blockquote>
-        <p class="review-meta">
-          <span class="review-name placeholder">[Customer Name]</span>
-          <span class="review-city placeholder">[City]</span>
-        </p>
-      </li>
-    </ul>
+    <div class="review-carousel">
+      <div class="review-nav">
+        <button type="button" data-dir="prev" aria-label="Show previous review">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 18l-6-6 6-6"/></svg>
+        </button>
+        <button type="button" data-dir="next" aria-label="Show next review">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 18l6-6-6-6"/></svg>
+        </button>
+      </div>
+      <ul class="review-grid" role="list">
+        <li class="review-card">
+          <blockquote>
+            <p class="placeholder">[REAL CUSTOMER REVIEW — paste the customer's own words here]</p>
+          </blockquote>
+          <p class="review-meta">
+            <span class="review-name placeholder">[Customer Name]</span>
+            <span class="review-city placeholder">[City]</span>
+          </p>
+        </li>
+        <li class="review-card">
+          <blockquote>
+            <p class="placeholder">[REAL CUSTOMER REVIEW — paste the customer's own words here]</p>
+          </blockquote>
+          <p class="review-meta">
+            <span class="review-name placeholder">[Customer Name]</span>
+            <span class="review-city placeholder">[City]</span>
+          </p>
+        </li>
+        <li class="review-card">
+          <blockquote>
+            <p class="placeholder">[REAL CUSTOMER REVIEW — paste the customer's own words here]</p>
+          </blockquote>
+          <p class="review-meta">
+            <span class="review-name placeholder">[Customer Name]</span>
+            <span class="review-city placeholder">[City]</span>
+          </p>
+        </li>
+      </ul>
+    </div>
 
     <p class="review-link">
       Read or leave a review on our Google Business Profile: {{GBP_REVIEW_LINK}}

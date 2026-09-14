@@ -13,7 +13,7 @@ module.exports = {
   domain: 'agarwalpackersmoversindia.com',
   origin: 'https://agarwalpackersmoversindia.com',
   tagline: 'Professional Packers & Movers for Safe & Reliable Relocation',
-  logo: '/images/agarwal-packers-movers-india-logo.svg',
+  logo: '/assets/logo/svg/apmi-logo-primary.svg',
   defaultOgImage: '/images/og/agarwal-packers-movers-india-relocation-services.png',
 
   // ── NAP — PLACEHOLDERS. Do not publish until replaced with real data. ──────
