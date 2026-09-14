@@ -16,10 +16,10 @@ module.exports = {
   logo: '/assets/logo/svg/apmi-logo-primary.svg',
   defaultOgImage: '/images/og/agarwal-packers-movers-india-relocation-services.png',
 
-  // ── NAP — PLACEHOLDERS. Do not publish until replaced with real data. ──────
-  phoneDisplay: '+91 XXXXX XXXXX',      // PLACEHOLDER
-  phoneHref: '+91XXXXXXXXXX',           // PLACEHOLDER (E.164, no spaces)
-  whatsappNumber: '91XXXXXXXXXX',       // PLACEHOLDER (country code + number)
+  // ── NAP ───────────────────────────────────────────────────────────────────
+  phoneDisplay: '+91 90713 01006',
+  phoneHref: '+919071301006',
+  whatsappNumber: '919071301006',
   whatsappText: 'Hi, I would like a free moving quote from Agarwal Packers Movers India.',
   email: 'ADD-BUSINESS-EMAIL@agarwalpackersmoversindia.com', // PLACEHOLDER
   hours: '[Add business hours — e.g. Mon–Sun, 8:00 AM – 8:00 PM]',   // PLACEHOLDER
@@ -41,8 +41,7 @@ module.exports = {
     visakhapatnam: null   // PLACEHOLDER
   },
 
-  // Per-city NAP. streetAddress/postalCode stay null until verified; schema
-  // omits them rather than inventing them.
+  // Per-city NAP. Geo coordinates stay null until verified.
   cities: {
     jodhpur: {
       name: 'Jodhpur', region: 'Rajasthan', regionCode: 'RJ',
@@ -55,12 +54,20 @@ module.exports = {
     noida: {
       name: 'Noida', region: 'Uttar Pradesh', regionCode: 'UP',
       slug: 'packers-movers-noida',
-      streetAddress: null, postalCode: null, phoneDisplay: null, geo: null
+      streetAddress: 'C 249, Sector 3, Greater Noida', postalCode: '201301',
+      phoneDisplay: '+91 90713 01006', geo: null
     },
     visakhapatnam: {
       name: 'Visakhapatnam', region: 'Andhra Pradesh', regionCode: 'AP',
       slug: 'packers-movers-visakhapatnam',
-      streetAddress: null, postalCode: null, phoneDisplay: null, geo: null
+      streetAddress: 'Shop No. 12, Block A, HPCL Colony, Pandurangapuram', postalCode: '530003',
+      phoneDisplay: '+91 90713 01006', geo: null
+    },
+    bengaluru: {
+      name: 'Bengaluru', region: 'Karnataka', regionCode: 'KA',
+      slug: 'packers-movers-bengaluru',
+      streetAddress: 'Signayakahalli, near Government High School, Yelahanka', postalCode: '560064',
+      phoneDisplay: '+91 90713 01006', geo: null
     }
   },
 

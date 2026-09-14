@@ -153,7 +153,7 @@ function organizationNode() {
     name: site.name,
     url: site.origin + '/',
     description:
-      'Packers and movers offering household shifting, office relocation, car and bike transportation, packing, loading, unloading and storage in Jodhpur, Noida and Visakhapatnam, with intercity moves across India.',
+      'Packers and movers offering household shifting, office relocation, car and bike transportation, packing, loading, unloading and storage in Jodhpur, Noida, Visakhapatnam and Bengaluru, with intercity moves across India.',
     logo: {
       '@type': 'ImageObject',
       '@id': site.origin + '/#logo',
@@ -162,11 +162,13 @@ function organizationNode() {
       caption: site.name
     },
     image: { '@id': site.origin + '/#logo' },
+    telephone: site.phoneHref,
     knowsLanguage: ['en-IN', 'hi-IN'],
     areaServed: [
       { '@type': 'City', name: 'Jodhpur' },
       { '@type': 'City', name: 'Noida' },
       { '@type': 'City', name: 'Visakhapatnam' },
+      { '@type': 'City', name: 'Bengaluru' },
       { '@type': 'Country', name: 'India' }
     ]
   };
@@ -193,6 +195,7 @@ function localBusinessNode(cityKey, canonical) {
     name: site.name + ' — ' + c.name,
     url: canonical,
     parentOrganization: { '@id': site.origin + '/#organization' },
+    telephone: c.phoneDisplay || site.phoneHref,
     address,
     areaServed: { '@type': 'City', name: c.name },
     image: { '@id': site.origin + '/#logo' }
